@@ -2,7 +2,8 @@ name: Bot3
 
 on:
   push:
-    branches: [ stag2 ]
+    branches:
+      - stag
 
 env:
   TZ: America/Recife
@@ -81,19 +82,14 @@ jobs:
               sudo mkdir -p /usr/java/oracle
               cd /usr/java/oracle
               wget 'https://github.com/VeloshGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O java.tar.gz; sudo tar -xzvf java.tar.gz
-
               JAVA_HOME=/usr/java/oracle/jdk-16.0.1
               PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
-
               export JAVA_HOME
               export PATH
-              
               sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/jdk-16.0.1/bin/java" 1
               sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/oracle/jdk-16.0.1/bin/javac" 1
-              
               echo '1' | sudo update-alternatives --config java
               echo '1' | sudo update-alternatives --config javac
-
               sudo dpkg --purge --force-depends ca-certificates-java
               sudo apt-get install ca-certificates-java -y
 
@@ -101,10 +97,8 @@ jobs:
          continue-on-error: true
          timeout-minutes: 350
          run: |
-              # Use sed to patch default hotkey to avoid conflict with main bot
               sed -i "s/'!'/'.'/g" Bot3/src/main/java/com/vegazsdev/bobobot/TelegramBot.java
               sed -i "s/'!'/'.'/g" Bot3/src/main/java/com/vegazsdev/bobobot/Main.java
-
               cd Bot3
               ./gradlew shadowJar
               cd ../; mv Bot3/build/libs/*.jar BoboBot.jar
