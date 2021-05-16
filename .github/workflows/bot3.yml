@@ -75,33 +75,32 @@ jobs:
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
 
-      - name: Install & Fix Java 16
-        continue-on-error: true
-        run: |
-          sudo mkdir -p /usr/java/oracle
-          cd /usr/java/oracle
-          sudo wget 'https://github.com/VeloshGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O java.tar.gz
-          sudo sudo tar -xzvf java.tar.gz
-          export JAVA_HOME=/usr/java/oracle/jdk-16.0.1
-          export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
-          sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/jdk-16.0.1/bin/java" 1
-          sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/oracle/jdk-16.0.1/bin/javac" 1
-          echo '1' | sudo update-alternatives --config java
-          echo '1' | sudo update-alternatives --config javac
-          sudo dpkg --purge --force-depends ca-certificates-java
-          sudo apt-get install ca-certificates-java -y
-
       - name: Build & Run Bot3 source
         continue-on-error: true
         timeout-minutes: 350
         run: |
+          sudo su
+          sudo mkdir -p /usr/java/oracle
+          cd /usr/java/oracle
+          wget 'https://github.com/VeloshGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O java.tar.gz >> /dev/null 2> /dev/null
+          tar -xzvf java.tar.gz
+          export JAVA_HOME="/usr/java/oracle/jdk-16.0.1"
+          export PATH="$PATH:$HOME/bin:$JAVA_HOME/bin"
+          echo 'JAVA_HOME="/usr/java/oracle/jdk-16.0.1"' >> /etc/environment
+          source /etc/environment
+          update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/jdk-16.0.1/bin/java" 1
+          update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/oracle/jdk-16.0.1/bin/javac" 1
+          echo '1' | update-alternatives --config java
+          echo '1' | update-alternatives --config javac
+          dpkg --purge --force-depends ca-certificates-java
+          apt-get install ca-certificates-java -y
           sed -i "s/'!'/'.'/g" Bot3/src/main/java/com/vegazsdev/bobobot/TelegramBot.java
           sed -i "s/'!'/'.'/g" Bot3/src/main/java/com/vegazsdev/bobobot/Main.java
           cd Bot3
           ./gradlew shadowJar
           cd ../; mv Bot3/build/libs/*.jar BoboBot.jar
           rm -rf Bot3
-          sudo java -jar BoboBot.jar
+          java -jar BoboBot.jar
 
       - name: Re-run Bot3 workflow
         continue-on-error: true
