@@ -40,8 +40,8 @@ jobs:
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
-          echo "bot-token=${{ secrets.GH }}" >> configs.prop
-          echo "bot-username=veloshstagingbot" >> configs.prop
+          echo "bot-token=${{ secrets.GH_3 }}" >> configs.prop
+          echo "bot-username=trebleexpbot" >> configs.prop
           echo "bot-master=1072790346" >> configs.prop
           echo "privateChat=-1001374650142" >> configs.prop
           echo "requestChat=-1001383418886" >> configs.prop
@@ -58,7 +58,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/VeloshGSIs/Bot3-Workflow Bobot
+          git clone https://github.com/VeloshGSIs/Bot3-Workflow -b stag3 Bobot
 
       - name: Install tools/packages
         continue-on-error: true
@@ -93,9 +93,11 @@ jobs:
           cd ${ABC}
           git clone https://github.com/TrebleExperience/Bot3 Bot; cd Bot
           wget 'https://gist.githubusercontent.com/Velosh/95c9844c8a259fc99ec1f09c7c432781/raw/1f5ee87215c4b144bdc4674032e87d68df7fbd96/0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch' -O 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
-          wget 'https://gist.githubusercontent.com/Velosh/6ad1a93fa8d3d78116b17fd34068da2b/raw/721b834ab23095dd2ee795bee2f2d888616378dd/0001-Bot-Use-.-as-default-prefix.patch' -O '0001-Bot-Use-.-as-default-prefix.patch'
+          wget 'https://gist.githubusercontent.com/Velosh/9f6dc1bb674fd5dc48d118d5ece11a26/raw/5e31a0bd9ad1a53d79d97f4710d2470c88202895/0001-Bot-Use-as-default-prefix.patch' -O '0001-Bot-Use-as-default-prefix.patch'
           git am 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
           rm -rf 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
+          git am 0001-Bot-Use-as-default-prefix.patch
+          rm -rf 0001-Bot-Use-as-default-prefix.patch
           ./gradlew shadowJar
           cd ../; mv Bot/build/libs/*.jar BoboBot.jar
           rm -rf Bot
