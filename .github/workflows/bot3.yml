@@ -1,7 +1,7 @@
 name: Bot3
 on:
   push:
-    branches: [stag]
+    branches: [stag3]
 
 env:
   TZ: America/Recife
