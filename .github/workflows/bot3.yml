@@ -98,6 +98,7 @@ jobs:
           git am 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
           rm -rf 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
           sed -i "s|'/'|';'|g" src/main/java/com/vegazsdev/bobobot/TelegramBot.java
+          sed -i "s|'/'|';'|g" src/main/java/com/vegazsdev/bobobot/Main.java
           ./gradlew shadowJar
           cd ../; mv Bot/build/libs/*.jar BoboBot.jar
           rm -rf Bot
