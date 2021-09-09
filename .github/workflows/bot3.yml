@@ -1,7 +1,7 @@
 name: Bot3
 on:
   push:
-    branches: [stag]
+    branches: [stag4]
 
 env:
   TZ: America/Recife
@@ -42,25 +42,24 @@ jobs:
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
-          echo "bot-token=${{ secrets.GH }}" >> configs.prop
-          echo "bot-username=veloshstagingbot" >> configs.prop
+          echo "bot-token=${{ secrets.GH_4 }}" >> configs.prop
+          echo "bot-username=trebleexpsgsibot" >> configs.prop
           echo "bot-master=1072790346" >> configs.prop
-          echo "privateChat=-1001374650142" >> configs.prop
-          echo "requestChat=-1001383418886" >> configs.prop
-          echo "publicChannel=TrebleExperience" >> configs.prop
+          echo "privateChat=-1000" >> configs.prop
+          echo "requestChat=-1000" >> configs.prop
+          echo "publicChannel=TrebleExperienceBeta" >> configs.prop
           echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
-          echo "bot-sf-proj=trebleexperience" >> sf-creds.prop
+          echo "bot-sf-proj=trebleexperience-testing" >> sf-creds.prop
           echo "bot-sf-user=velosh" >> sf-creds.prop
-          echo "bot-announcement-id=-1001489409825" >> sf-creds.prop
+          echo "bot-announcement-id=-1001469724030" >> sf-creds.prop
           echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
           echo "bot-send-announcement=true" >> sf-creds.prop
-          echo '["1195724888","1484670029","1628025516","1469015383","1263663104"]' >> allowed2port.json
 
       - name: Clone workflow
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/VeloshGSIs/Bot3-Workflow Bobot
+          git clone https://github.com/TrebleExperience/Bot3-Workflow -b stag4 Bobot
 
       - name: Install tools/packages
         continue-on-error: true
