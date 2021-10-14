@@ -54,6 +54,5 @@ jobs:
         run: |
           sudo gu install native-image
           sudo update-alternatives --install "/usr/bin/native-image" "native-image" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/native-image" 1
-          cd Bot3 && native-image -jar build/libs/*.jar
-          BoboBot="$(realpath "$(find . -maxdepth 1 -type f -iname *.jar)" | sed "s/.jar//g")"
-          $BoboBot
+          cd Bot3/build/libs && native-image -jar *.jar
+          ./BoboBot-1.7.0-all
