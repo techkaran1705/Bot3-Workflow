@@ -15,7 +15,11 @@ jobs:
     steps:
       - name: Checkouts
         uses: actions/checkout@master
-
+          
+      - name: Try to drop prebuilt OpenJDKs
+        run: | 
+          sudo apt-get purge --purge adoptopenjdk-* msopenjdk-* openjdk-* -y
+      
       - name: Check prebuilt OpenJDKs
         run: |
           apt list | grep openjdk
