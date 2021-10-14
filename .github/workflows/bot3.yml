@@ -1,7 +1,7 @@
 name: Bot3
 on:
   push:
-    branches: [stag]
+    branches: [stag3]
 
 env:
   TZ: America/Recife
@@ -74,7 +74,10 @@ jobs:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
           git clone https://github.com/TrebleExperience/Bot3
-          cd Bot3 && ./gradlew shadowJar; cd build/libs
+          cd Bot3
+          sed -i "s|'/'|';'|g" src/main/java/com/vegazsdev/bobobot/TelegramBot.java
+          sed -i "s|'/'|';'|g" src/main/java/com/vegazsdev/bobobot/Main.java
+          ./gradlew shadowJar; cd build/libs
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
