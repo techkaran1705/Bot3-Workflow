@@ -18,7 +18,7 @@ jobs:
           
       - name: Try to drop prebuilt OpenJDKs
         run: | 
-          sudo apt-get purge --purge adoptopenjdk-* msopenjdk-* openjdk-* -y
+          sudo apt-get purge --purge adoptopenjdk* msopenjdk* openjdk-11* openjdk-13* openjdk-16* openjdk-17* openjdk-8* openjdk* -y
       
       - name: Check prebuilt OpenJDKs
         run: |
