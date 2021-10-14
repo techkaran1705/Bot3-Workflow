@@ -41,3 +41,14 @@ jobs:
       - name: Check GraalVM version
         run: |
           java -version
+      
+      - name: Clone & Compile Bot³+t
+        run: |
+          git clone https://github.com/TrebleExperience/Bot3
+          cd Bot3 && ./gradlew shadowJar
+          
+      - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code (Also install required stuff)
+        run: |
+          sudo apt-get install build-essential libz-dev zlib1g-dev -y
+          gu install native-image
+          cd Bot3 && native-image -jar build/libs/*.jar
