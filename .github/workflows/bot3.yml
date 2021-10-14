@@ -30,4 +30,4 @@ jobs:
           cd /usr; sudo mkdir -p oracle/java/ && cd oracle/java/
           sudo wget 'https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.2.0/graalvm-ce-java16-linux-amd64-21.2.0.tar.gz' -O graalvm-jdk16.tar.gz >> /dev/null 2>&1
           sudo tar -xzvf graalvm-jdk16.tar.gz >> /dev/null 2>&1 && sudo rm -f graalvm-jdk16.tar.gz
-          pwd; ls
+          cd graalvm-ce-java16-21.2.0; ls
