@@ -43,6 +43,8 @@ jobs:
           java -version
       
       - name: Clone & Compile Bot³+t
+        env:
+          JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
           git clone https://github.com/TrebleExperience/Bot3
           cd Bot3 && ./gradlew shadowJar
