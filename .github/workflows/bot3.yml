@@ -17,7 +17,8 @@ jobs:
         uses: actions/checkout@master
           
       - name: Try to drop prebuilt OpenJDKs
-        run: | 
+        run: |
+          rm -rf /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
           sudo apt-get purge --purge adoptopenjdk* msopenjdk* openjdk-11* openjdk-13* openjdk-16* openjdk-17* openjdk-8* openjdk* -y
       
       - name: Check prebuilt OpenJDKs
