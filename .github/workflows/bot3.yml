@@ -114,7 +114,7 @@ jobs:
       - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code
         continue-on-error: true
         timeout-minutes: 315
-        run: cd Bot3/build/libs && ./BoboBot-1.7.0-all
+        run: cd Bot3/build/libs && sudo ./BoboBot-1.7.0-all
 
       - name: Re-run Bot3 workflow
         continue-on-error: true
