@@ -24,3 +24,7 @@ jobs:
       - name: Check prebuilt OpenJDKs
         run: |
           apt list | grep openjdk
+
+      - name: Check Java stuff
+        run: |
+          java -version
