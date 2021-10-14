@@ -30,4 +30,14 @@ jobs:
           cd /usr; sudo mkdir -p oracle/java/ && cd oracle/java/
           sudo wget 'https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.2.0/graalvm-ce-java16-linux-amd64-21.2.0.tar.gz' -O graalvm-jdk16.tar.gz >> /dev/null 2>&1
           sudo tar -xzvf graalvm-jdk16.tar.gz >> /dev/null 2>&1 && sudo rm -f graalvm-jdk16.tar.gz
-          cd graalvm-ce-java16-21.2.0; ls
+          export JAVA_HOME=/usr/oracle/java/graalvm-ce-java16-21.2.0
+          export PATH=$PATH:$JAVA_HOME/bin
+      
+      - name: Set GraalVM as default
+        run: |
+          sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/javac" 1
+          sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/graalvm-ce-java16-21.2.0/bin/java" 1
+    
+      - name: Check GraalVM version
+        run: |
+          java -version
