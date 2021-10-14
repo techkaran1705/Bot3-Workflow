@@ -38,7 +38,6 @@ jobs:
           sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/javac" 1
           sudo update-alternatives --install "/usr/bin/java" "java" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java" 1
           sudo update-alternatives --install "/usr/bin/gu" "gu" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/gu" 1
-          sudo update-alternatives --install "/usr/bin/native-image" "native-image" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/native-image" 1
     
       - name: Check GraalVM version
         run: |
@@ -54,4 +53,5 @@ jobs:
       - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code
         run: |
           sudo gu install native-image
+          sudo update-alternatives --install "/usr/bin/native-image" "native-image" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/native-image" 1
           cd Bot3 && native-image -jar build/libs/*.jar
