@@ -105,11 +105,13 @@ jobs:
         continue-on-error: true
         timeout-minutes: 6
         run: |
+          sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
           cd Bot3/build/libs
           git clone --recurse-submodules https://github.com/TrebleExperience/EXP-TrebleExp.git ErfanGSIs -b velan/stable
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
+          cd ErfanGSIs/tools/ROM_resigner && git reset --hard HEAD~2
 
       - name: Run the Bot³+t
         continue-on-error: true
