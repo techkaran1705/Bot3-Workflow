@@ -108,12 +108,12 @@ jobs:
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
-
-   - name: Run Bot
-         timeout-minutes: 350
-         continue-on-error: true
-         run: |
-              sudo /usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java -jar BoboBot.ja
+          
+      - name: Run Bot
+        continue-on-error: true
+        timeout-minutes: 350
+        run: |
+            sudo /usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java -jar BoboBot.jar
 
       - name: Re-run Bot3 workflow
         continue-on-error: true
