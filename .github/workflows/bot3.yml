@@ -108,6 +108,12 @@ jobs:
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
+
+      -name: Update
+       continue-on-error: true
+       timeout-minutes: 315
+       run: |
+            bash ErfanGSIs/update.sh
           
       - name: Run Bot
         continue-on-error: true
