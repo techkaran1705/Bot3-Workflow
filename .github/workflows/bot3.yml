@@ -69,6 +69,12 @@ jobs:
           sudo update-alternatives --install "/usr/bin/java" "java" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java" 1
           sudo update-alternatives --install "/usr/bin/gu" "gu" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/gu" 1
       
+      - name: gradlew
+        continue-on-error: true
+        timeout-minutes: 315
+        run: |
+            sudo chmod 755 gradlew
+
       - name: Clone, Compile & Setup Bot³+t
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
@@ -114,12 +120,6 @@ jobs:
         timeout-minutes: 315
         run: |
              bash ErfanGSIs/update.sh
-
-      - name: gradlew
-        continue-on-error: true
-        timeout-minutes: 315
-        run: |
-            sudo chmod 755 gradlew
 
       - name: Run Bot
         continue-on-error: true
