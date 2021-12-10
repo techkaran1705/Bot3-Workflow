@@ -73,7 +73,7 @@ jobs:
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
-          git clone https://github.com/dp0148475/Bot3
+          git clone https://github.com/dp0148475/bot3-yumi
           cd Bot3 && sudo chmod 755 gradlew && sudo ./gradlew build
           mkdir configs && cd configs
           touch configs.prop
