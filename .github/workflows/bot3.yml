@@ -117,7 +117,7 @@ jobs:
 
       - name: gradlew
         continue-on-error: true
-        timout-minutes: 315
+        timeout-minutes: 315
         run |
             sudo chmod 755 gradlew
 
