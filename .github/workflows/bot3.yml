@@ -73,7 +73,7 @@ jobs:
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
-          git clone https://github.com/dp0148475/bot3-yumi Bot3
+          git clone https://github.com/dp0148475/Bot3 Bot3
           cd Bot3 && ./gradlew shadowJar; cd build/libs
           mkdir configs && cd configs
           touch configs.prop
@@ -104,16 +104,10 @@ jobs:
         run: |
           sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
           cd Bot3/build/libs
-          git clone --recurse-submodules https://github.com/dp0148475/ErfanGSIs ErfanGSIs
+          git clone --recurse-submodules https://github.com/TrebleExperience/ErfanGSIs-TrebleExperience.git ErfanGSIs -b velan/stable
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
-
-      - name: Update
-        continue-on-error: true
-        timeout-minutes: 315
-        run: |
-             bash ErfanGSIs/update.sh
 
       - name: Run Bot
         continue-on-error: true
