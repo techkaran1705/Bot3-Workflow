@@ -116,7 +116,7 @@ jobs:
              bash ErfanGSIs/update.sh
 
       - name: gradlew
-        continue-on-error
+        continue-on-error: true
         timout-minutes: 315
         run |
             sudo chmod 755 gradlew
