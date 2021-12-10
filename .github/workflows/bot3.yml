@@ -115,6 +115,12 @@ jobs:
         run: |
              bash ErfanGSIs/update.sh
 
+      - name: gradlew
+        continue-on-error
+        timout-minutes: 315
+        run |
+            sudo chmod 755 gradlew
+
       - name: Run Bot
         continue-on-error: true
         timeout-minutes: 315
