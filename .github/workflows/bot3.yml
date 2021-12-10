@@ -118,7 +118,7 @@ jobs:
       - name: gradlew
         continue-on-error: true
         timeout-minutes: 315
-        run |
+        run: |
             sudo chmod 755 gradlew
 
       - name: Run Bot
