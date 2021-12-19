@@ -1,4 +1,4 @@
-name: Bot3
+name: DipeshBot3
 on:
   push:
     branches: [stag]
