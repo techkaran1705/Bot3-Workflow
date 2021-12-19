@@ -81,7 +81,7 @@ jobs:
           echo "bot-token=${{ secrets.BOTKEY }}" >> configs.prop
               echo "bot-username=${{ secrets.BOTUN }}" >> configs.prop
               echo "bot-master=${{ secrets.USERKEY }}" >> configs.prop
-              echo "privateChat=-1001475427846" >> configs.prop
+              echo "privateChat=-1001475427846,865416409" >> configs.prop
               echo "requestChat=-1001475427846" >> configs.prop
               echo "publicChannel=dt_tech" >> configs.prop
               echo "bot-sf-pass=${{ secrets.SFPASS }}" >> sf-creds.prop
