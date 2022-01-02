@@ -87,7 +87,7 @@ jobs:
               echo "bot-sf-pass=${{ secrets.SFPASS }}" >> sf-creds.prop
               echo "bot-sf-proj=${{ secrets.PROJECT }}" >> sf-creds.prop
               echo "bot-sf-user=${{ secrets.SFUSER }}" >> sf-creds.prop
-              echo "bot-announcement-id=-1001475427846" >> sf-creds.prop
+              echo "bot-announcement-id=-1001453367842" >> sf-creds.prop
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
               echo "bot-send-announcement=true" >> sf-creds.prop
               echo '[]' >> allowed2port.json
