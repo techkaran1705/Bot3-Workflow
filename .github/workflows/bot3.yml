@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup git Environment
         run: |
-          git config --global user.name "dp0148475"
+          git config --global user.name "techkaran1705"
           git config --global user.email "patildipesh2789@gmail.com"
           git config --global pull.rebase false
           git config --global credential.helper store
@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/dp0148475/Bot3-Workflow Bobot
+          git clone https://github.com/techkaran1705/Bot3-Workflow Bobot
 
       - name: Install tools/packages
         continue-on-error: true
@@ -73,7 +73,7 @@ jobs:
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
-          git clone https://github.com/dp0148475/Bot3 Bot3
+          git clone https://github.com/techkaran1705/Bot3 Bot3
           cd Bot3 && ./gradlew shadowJar; cd build/libs
           mkdir configs && cd configs
           touch configs.prop
@@ -104,7 +104,7 @@ jobs:
         run: |
            sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
            cd Bot3/build/libs
-           git clone --recurse-submodules https://github.com/dp0148475/ErfanGSIs-TrebleExperience.git ErfanGSIs -b velan/stable
+           git clone --recurse-submodules https://github.com/techkaran1705/ErfanGSIs-TrebleExperience.git ErfanGSIs -b velan/stable
            pip3 install wheel setuptools
            pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
            sudo pip3 install --upgrade protobuf
