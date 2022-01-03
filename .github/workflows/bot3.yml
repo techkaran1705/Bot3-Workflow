@@ -31,7 +31,7 @@ jobs:
       - name: Setup git Environment
         run: |
           git config --global user.name "techkaran1705"
-          git config --global user.email "patildipesh2789@gmail.com"
+          git config --global user.email "techkaran0@gmail.com"
           git config --global pull.rebase false
           git config --global credential.helper store
           echo "https://Daffety:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
@@ -83,11 +83,11 @@ jobs:
               echo "bot-master=${{ secrets.USERKEY }}" >> configs.prop
               echo "privateChat=-1001475427846" >> configs.prop
               echo "requestChat=-1001475427846" >> configs.prop
-              echo "publicChannel=dt_tech" >> configs.prop
+              echo "publicChannel=techkaranupdates" >> configs.prop
               echo "bot-sf-pass=${{ secrets.SFPASS }}" >> sf-creds.prop
               echo "bot-sf-proj=${{ secrets.PROJECT }}" >> sf-creds.prop
               echo "bot-sf-user=${{ secrets.SFUSER }}" >> sf-creds.prop
-              echo "bot-announcement-id=-1001453367842" >> sf-creds.prop
+              echo "bot-announcement-id=-1001476441997" >> sf-creds.prop
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
               echo "bot-send-announcement=true" >> sf-creds.prop
               echo '[]' >> allowed2port.json
