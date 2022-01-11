@@ -7,4 +7,5 @@ This workflow aims to run the Bot3 jar file in loop, every 6 hours this workflow
 
 - [Bot3](https://github.com/VeloshGSIs/Bot3)
 - [Nippon](https://github.com/nnippon)
-- [Dipesh](https://dt_tech)
+- [Dipesh](https://t.me/dt_tech)
+- [Dipesh-Github] (https://gitHub.com/dp014875)
